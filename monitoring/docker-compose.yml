@@ -1,0 +1,35 @@
+# Separate compose project: does not touch your redis/postgres containers.
+#   cd monitoring && docker compose up -d
+# Both run on the HOST network (Linux), so Prometheus reaches the gateway on 127.0.0.1:8000
+# without exposing the gateway on 0.0.0.0. Both listen on 127.0.0.1 only.
+#   Prometheus: http://localhost:9091      Grafana: http://localhost:3001  (admin / admin)
+name: llm-gateway-monitoring
+services:
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    network_mode: host
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --web.listen-address=127.0.0.1:${PROMETHEUS_PORT:-9091}
+      - --storage.tsdb.retention.time=7d
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - promdata:/prometheus
+  grafana:
+    image: grafana/grafana:11.3.1
+    network_mode: host
+    environment:
+      GF_SERVER_HTTP_ADDR: 127.0.0.1
+      GF_SERVER_HTTP_PORT: ${GRAFANA_PORT:-3001}
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+      GF_USERS_DEFAULT_THEME: light
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafanadata:/var/lib/grafana
+    depends_on: [prometheus]
+volumes:
+  promdata:
+  grafanadata:

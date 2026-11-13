@@ -1,0 +1,150 @@
+model=ollama:nomic-embed-text prefix='search_query: '  pairs: 30 same-meaning, 30 different
+similarity  same-meaning: mean 0.805 min 0.554
+similarity  different   : mean 0.816 max 0.990
+
+  thr   hit rate (paraphrases)    false hits (different)
+ 0.70                    76.7%                     90.0%
+ 0.72                    73.3%                     90.0%
+ 0.74                    70.0%                     83.3%
+ 0.76                    70.0%                     83.3%
+ 0.78                    56.7%                     76.7%
+ 0.80                    53.3%                     60.0%
+ 0.82                    43.3%                     50.0%
+ 0.84                    36.7%                     50.0%
+ 0.86                    33.3%                     43.3%
+ 0.88                    26.7%                     33.3%
+ 0.90                    20.0%                     20.0%
+ 0.92                    20.0%                     10.0%
+ 0.94                    13.3%                      6.7%
+ 0.96                    13.3%                      3.3%
+ 0.98                     6.7%                      3.3%
+ 1.00                     0.0%                      0.0%
+
+Lowest-risk pick: threshold 1.0 -> 0.0% of paraphrases hit with 0 false hits on this set. Set SEMANTIC_THRESHOLD=1.0 (add a small margin).
+
+Worst false-hit candidates (different meaning, highest similarity):
+  0.990  'Convert 10 km to miles.'  vs  'Convert 10 miles to km.'
+  0.950  'Is the Pro plan $20 per month?'  vs  'Is the Pro plan $20 per year?'
+  0.930  'How do I enable dark mode?'  vs  'How do I disable dark mode?'
+  0.911  'How do I turn on notifications?'  vs  'How do I turn off notifications?'
+  0.910  'How do I install Python on Windows?'  vs  'How do I install Python on Linux?'
+model=ollama:nomic-embed-text prefix='clustering: '  pairs: 30 same-meaning, 30 different
+similarity  same-meaning: mean 0.872 min 0.703
+similarity  different   : mean 0.878 max 0.994
+
+  thr   hit rate (paraphrases)    false hits (different)
+ 0.70                   100.0%                     90.0%
+ 0.72                    96.7%                     90.0%
+ 0.74                    96.7%                     90.0%
+ 0.76                    86.7%                     90.0%
+ 0.78                    83.3%                     86.7%
+ 0.80                    76.7%                     86.7%
+ 0.82                    76.7%                     83.3%
+ 0.84                    73.3%                     80.0%
+ 0.86                    56.7%                     70.0%
+ 0.88                    46.7%                     56.7%
+ 0.90                    40.0%                     50.0%
+ 0.92                    36.7%                     40.0%
+ 0.94                    23.3%                     30.0%
+ 0.96                    13.3%                     13.3%
+ 0.98                    10.0%                      3.3%
+ 1.00                     0.0%                      0.0%
+
+Lowest-risk pick: threshold 1.0 -> 0.0% of paraphrases hit with 0 false hits on this set. Set SEMANTIC_THRESHOLD=1.0 (add a small margin).
+
+Worst false-hit candidates (different meaning, highest similarity):
+  0.994  'Convert 10 km to miles.'  vs  'Convert 10 miles to km.'
+  0.968  'Is the Pro plan $20 per month?'  vs  'Is the Pro plan $20 per year?'
+  0.967  'How do I increase my rate limit?'  vs  'How do I decrease my rate limit?'
+  0.965  'How do I enable dark mode?'  vs  'How do I disable dark mode?'
+  0.955  'How do I install Python on Windows?'  vs  'How do I install Python on Linux?'
+model=ollama:mxbai-embed-large prefix=''  pairs: 30 same-meaning, 30 different
+similarity  same-meaning: mean 0.824 min 0.629
+similarity  different   : mean 0.763 max 0.974
+
+  thr   hit rate (paraphrases)    false hits (different)
+ 0.70                    83.3%                     76.7%
+ 0.72                    80.0%                     70.0%
+ 0.74                    76.7%                     70.0%
+ 0.76                    76.7%                     66.7%
+ 0.78                    73.3%                     46.7%
+ 0.80                    73.3%                     46.7%
+ 0.82                    46.7%                     36.7%
+ 0.84                    43.3%                     33.3%
+ 0.86                    40.0%                     20.0%
+ 0.88                    30.0%                     13.3%
+ 0.90                    20.0%                     10.0%
+ 0.92                    13.3%                     10.0%
+ 0.94                    13.3%                     10.0%
+ 0.96                    10.0%                      3.3%
+ 0.98                     0.0%                      0.0%
+ 1.00                     0.0%                      0.0%
+
+Lowest-risk pick: threshold 0.98 -> 0.0% of paraphrases hit with 0 false hits on this set. Set SEMANTIC_THRESHOLD=0.98 (add a small margin).
+
+Worst false-hit candidates (different meaning, highest similarity):
+  0.974  'Convert 10 km to miles.'  vs  'Convert 10 miles to km.'
+  0.946  'How do I enable dark mode?'  vs  'How do I disable dark mode?'
+  0.943  'Is the Pro plan $20 per month?'  vs  'Is the Pro plan $20 per year?'
+  0.885  'What is the time complexity of quicksort?'  vs  'What is the time complexity of mergesort?'
+  0.878  'Does the app work offline?'  vs  'Does the app work online only?'
+model=ollama:bge-m3 prefix=''  pairs: 30 same-meaning, 30 different
+similarity  same-meaning: mean 0.832 min 0.643
+similarity  different   : mean 0.804 max 0.976
+
+  thr   hit rate (paraphrases)    false hits (different)
+ 0.70                    90.0%                     83.3%
+ 0.72                    86.7%                     80.0%
+ 0.74                    73.3%                     76.7%
+ 0.76                    73.3%                     76.7%
+ 0.78                    70.0%                     66.7%
+ 0.80                    66.7%                     56.7%
+ 0.82                    56.7%                     46.7%
+ 0.84                    50.0%                     36.7%
+ 0.86                    40.0%                     26.7%
+ 0.88                    33.3%                     26.7%
+ 0.90                    26.7%                     20.0%
+ 0.92                    23.3%                     10.0%
+ 0.94                    13.3%                     10.0%
+ 0.96                    10.0%                      6.7%
+ 0.98                    10.0%                      0.0%
+ 1.00                     0.0%                      0.0%
+
+Lowest-risk pick: threshold 0.98 -> 10.0% of paraphrases hit with 0 false hits on this set. Set SEMANTIC_THRESHOLD=0.98 (add a small margin).
+
+Worst false-hit candidates (different meaning, highest similarity):
+  0.976  'Is the Pro plan $20 per month?'  vs  'Is the Pro plan $20 per year?'
+  0.969  'Convert 10 km to miles.'  vs  'Convert 10 miles to km.'
+  0.947  'How do I enable dark mode?'  vs  'How do I disable dark mode?'
+  0.918  'How do I enable two-factor authentication?'  vs  'How do I disable two-factor authentication?'
+  0.905  'How do I increase my rate limit?'  vs  'How do I decrease my rate limit?'
+model=openai:text-embedding-3-small prefix=''  pairs: 30 same-meaning, 30 different
+similarity  same-meaning: mean 0.708 min 0.472
+similarity  different   : mean 0.697 max 0.951
+
+  thr   hit rate (paraphrases)    false hits (different)
+ 0.70                    53.3%                     60.0%
+ 0.72                    46.7%                     53.3%
+ 0.74                    43.3%                     53.3%
+ 0.76                    43.3%                     46.7%
+ 0.78                    40.0%                     36.7%
+ 0.80                    30.0%                     33.3%
+ 0.82                    16.7%                     23.3%
+ 0.84                    13.3%                     16.7%
+ 0.86                    13.3%                     16.7%
+ 0.88                    10.0%                     13.3%
+ 0.90                     6.7%                      6.7%
+ 0.92                     6.7%                      3.3%
+ 0.94                     0.0%                      3.3%
+ 0.96                     0.0%                      0.0%
+ 0.98                     0.0%                      0.0%
+ 1.00                     0.0%                      0.0%
+
+Lowest-risk pick: threshold 0.96 -> 0.0% of paraphrases hit with 0 false hits on this set. Set SEMANTIC_THRESHOLD=0.96 (add a small margin).
+
+Worst false-hit candidates (different meaning, highest similarity):
+  0.951  'Convert 10 km to miles.'  vs  'Convert 10 miles to km.'
+  0.918  'Is the Pro plan $20 per month?'  vs  'Is the Pro plan $20 per year?'
+  0.892  'How do I increase my rate limit?'  vs  'How do I decrease my rate limit?'
+  0.887  'How do I enable dark mode?'  vs  'How do I disable dark mode?'
+  0.869  'Who won the 2018 World Cup?'  vs  'Who won the 2014 World Cup?'

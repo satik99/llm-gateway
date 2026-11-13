@@ -1,0 +1,20 @@
+# Host ports are configurable from your .env (docker compose reads it automatically):
+#   REDIS_PORT=6380      (default 6379)
+#   POSTGRES_PORT=5433   (default 5433, not 5432, to avoid clashing with a local Postgres)
+# Bound to 127.0.0.1 only: Redis has no password, so it must not listen on the network.
+services:
+  redis:
+    image: redis:7-alpine
+    ports: ["127.0.0.1:${REDIS_PORT:-6379}:6379"]
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: gateway
+      POSTGRES_PASSWORD: gateway
+      POSTGRES_DB: gateway
+    ports: ["127.0.0.1:${POSTGRES_PORT:-5433}:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+  # Later: prometheus, grafana
+
+volumes:
+  pgdata:

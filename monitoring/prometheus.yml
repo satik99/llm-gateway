@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 5s
+scrape_configs:
+  - job_name: llm-gateway
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["127.0.0.1:8000"]      # prometheus runs on the host network, so localhost works
+    # If you set METRICS_TOKEN in .env, uncomment:
+    # authorization:
+    #   credentials: your-token
